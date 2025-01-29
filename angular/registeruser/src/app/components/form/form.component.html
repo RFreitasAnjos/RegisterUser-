@@ -1,0 +1,37 @@
+<div>
+  <h1>CRUD de Usuários</h1>
+
+  <!-- Formulário para adicionar novo usuário -->
+  <h3>Adicionar Novo Usuário</h3>
+  <input (ngModel)="(newUser.name)" placeholder="Nome" />
+  <input (ngModel)="(newUser.email)" placeholder="Email" />
+  <button (click)="addUser()">Adicionar</button>
+
+  <!-- Tabela de usuários -->
+  <h3>Lista de Usuários</h3>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button (click)="edit(user.id)">Editar</button>
+        <button (click)="deleteUser(user.id)">Excluir</button>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Formulário para editar usuário -->
+  <div *ngIf="editUser.id">
+    <h3>Editar Usuário</h3>
+    <input (ngModel)="(editUser.name)" placeholder="Nome" />
+    <input (ngModel)="(editUser.email)" placeholder="Email" />
+    <button (click)="updateUser()">Atualizar</button>
+  </div>
+</div>
